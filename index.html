@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ignacio Kreis - Personal Portfolio</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --text-color: #333;
+            --light-bg: #f5f5f5;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .profile-name {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .profile-title {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .profile-contact {
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+            text-decoration: none;
+            padding: 5px 10px;
+            border: 1px solid white;
+            border-radius: 5px;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary-color);
+            background-color: white;
+        }
+        
+        nav {
+            background-color: var(--primary-color);
+            padding: 15px 0;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        
+        nav ul li a:hover {
+            opacity: 0.8;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--secondary-color);
+            position: relative;
+        }
+        
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .about-content {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .cv-container {
+            background-color: var(--light-bg);
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .cv-section {
+            margin-bottom: 30px;
+        }
+        
+        .cv-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        
+        .cv-item {
+            margin-bottom: 20px;
+        }
+        
+        .cv-item h4 {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .cv-item p.cv-date {
+            color: #777;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .project-content {
+            padding: 20px;
+        }
+        
+        .project-content h3 {
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+        
+        .project-content p {
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        
+        .project-tag {
+            background-color: var(--light-bg);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: var(--secondary-color);
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .skill-item {
+            margin-bottom: 15px;
+        }
+        
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        
+        .skill-bar-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+        }
+        
+        .skill-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 8px 0;
+            }
+            
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container profile-container">
+            <!-- Using a placeholder image - in a real deployment, you would replace this with your actual photo -->
+            <img src="/api/placeholder/200/200" alt="Ignacio Kreis" class="profile-image">
+            <h1 class="profile-name">IGNACIO ALEXANDER FERNANDO KREIS</h1>
+            <p class="profile-title">Master Student in Artificial Intelligence and Innovation Management</p>
+            <div class="profile-contact">
+                <p>📧 ignacio.kreis@studio.unibo.it</p>
+                <p>📱 +49 176 40583106</p>
+                <p>📍 Via Sant'Isaia, 114, Bologna, Italy</p>
+                <p>🏠 Ludolfstraße 4, 20249 Hamburg, Germany</p>
+                <p>🎂 31/07/1997 – Frankfurt, Germany</p>
+                <p>🌍 German / Chilean</p>
+            </div>
+            <div class="social-links">
+                <a href="#" title="LinkedIn">LinkedIn</a>
+                <a href="#" title="GitHub">GitHub</a>
+            </div>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#cv">CV</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Hello! I'm Ignacio Kreis, a Master's student in Artificial Intelligence and Innovation Management at the University of Bologna. With extensive experience in international business, export financing, and sales management across Central and South America, I bring a unique blend of business acumen and technical knowledge.</p>
+                    <p>I have a proven track record in business development, increasing profits by over 59% in key markets through strategic relationship building and targeted sales efforts. My experience spans multiple sectors including crop protection, export financing, and international trade.</p>
+                    <p>Currently, I'm expanding my skills in artificial intelligence and machine learning to integrate cutting-edge technology with business innovation. I'm fluent in English, Spanish, German, and have basic Italian skills, allowing me to work effectively across international environments.</p>
+                    <p>When I'm not working, I enjoy hockey, football, tennis, and skiing. I'm also passionate about social action, having participated in housing construction projects in Chile and contributed to the Seeds for Progress foundation in Nicaragua.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="cv" style="background-color: var(--light-bg);">
+        <div class="container">
+            <h2>Curriculum Vitae</h2>
+            <div class="cv-container">
+                <div class="cv-section">
+                    <h3>Education</h3>
+                    <div class="cv-item">
+                        <h4>Master in Artificial Intelligence and Innovation Management</h4>
+                        <p class="cv-date">10/2024 – present</p>
+                        <p>Bologna Business School, University of Bologna, Bologna, Italy</p>
+                    </div>
+                    <div class="cv-item">
+                        <h4>Bachelor (with honors) in Business Studies, International Business, Management</h4>
+                        <p class="cv-date">09/2019 – 02/2021</p>
+                        <p>University of South Wales, Wales, UK</p>
+                    </div>
+                    <div class="cv-item">
+                        <h4>Professional Development Programs (PDP), International Business</h4>
+                        <p class="cv-date">09/2017 – 10/2017</p>
+                        <p>European College of Business and Management, London, UK</p>
+                    </div>
+                    <div class="cv-item">
+                        <h4>Business Administration in Foreign Trade</h4>
+                        <p class="cv-date">08/2016 – 06/2019</p>
+                        <p>Institute for Wholesale and Foreign Trade Am Lämmermarkt, Hamburg, Germany</p>
+                    </div>
+                    <div class="cv-item">
+                        <h4>High School Diploma</h4>
+                        <p class="cv-date">03/2003 – 12/2015</p>
+                        <p>Colegio Aleman de Santiago - German School Santiago, Santiago, Chile</p>
+                    </div>
+                </div>
+                
+                <div class="cv-section">
+                    <h3>Work Experience</h3>
+                    <div class="cv-item">
+                        <h4>Sales Manager for Central and South America at Jebagro GmbH</h4>
+                        <p class="cv-date">06/2021 – 08/2024</p>
+                        <p>Hamburg, Germany</p>
+                        <ul>
+                            <li>Recruited a team of local representatives across key markets in Central and South America, increasing new customer acquisition within the first year.</li>
+                            <li>Leveraged import statistics and conducted market visits with representatives to secure new commodity financing clients, resulting in a boost in regional sales pipeline.</li>
+                            <li>Achieved a profit increase of 26.87% in 2021 and 59.06% by 2022 in my markets (Peru, Nicaragua, Panamá, Dem. Republic, Costa Rica, Mexico) through targeted sales and relationship-building efforts.</li>
+                            <li>Spearheaded development of new crop protection registrations for Jebagro, expanding market reach in Central America and enhancing product accessibility for regional clients.</li>
+                            <li>Streamlined procurement processes from Asia, collaborating closely with our China and India offices to reduce supply costs and improve delivery timelines.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="cv-item">
+                        <h4>Manager Export Finance at Ferrostaal Trading GmbH</h4>
+                        <p class="cv-date">06/2018 – 05/2021</p>
+                        <p>Hamburg, Germany</p>
+                        <ul>
+                            <li>Responsible for structuring short- and long-term financing with the help of state and/or private insurance.</li>
+                            <li>Conducted preliminary analysis on customer viability
